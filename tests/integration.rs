@@ -30,6 +30,16 @@ fn normalize_simple() {
 }
 
 #[test]
+fn normalize_with_tabs() {
+    assert_eq!(normalize("\tHello\tWorld "), "helloworld");
+}
+
+#[test]
+fn normalize_with_multiple_spaces() {
+    assert_eq!(normalize(" Hello   World "), "helloworld");
+}
+
+#[test]
 fn averages_only_positive() {
     let nums = [-5, 5, 15];
     assert!((broken_app::average_positive(&nums) - 10.0).abs() < f64::EPSILON);
