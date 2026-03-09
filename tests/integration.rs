@@ -1,4 +1,4 @@
-use broken_app::{algo, leak_buffer, normalize, sum_even};
+use broken_app::{algo, count_nonzero_bytes, normalize, sum_even};
 
 #[test]
 fn sums_even_numbers() {
@@ -10,7 +10,7 @@ fn sums_even_numbers() {
 #[test]
 fn counts_non_zero_bytes() {
     let data = [0_u8, 1, 0, 2, 3];
-    assert_eq!(leak_buffer(&data), 3);
+    assert_eq!(count_nonzero_bytes(&data), 3);
 }
 
 #[test]
