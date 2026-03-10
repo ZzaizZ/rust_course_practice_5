@@ -1,0 +1,30 @@
+     Running benches/baseline.rs (target/release/deps/baseline-10414254ae4ba731)
+sum_even: 24.893µs
+slow_fib: 252ns
+slow_dedup: 49.232µs
+sum_even: 24.57µs
+slow_fib: 159ns
+slow_dedup: 15.331µs
+sum_even: 24.347µs
+slow_fib: 147ns
+slow_dedup: 14.777µs
+     Running benches/criterion.rs (target/release/deps/criterion-e0de0e34e8cdfa46)
+Gnuplot not found, using plotters backend
+sum_even_broken         time:   [20.247 µs 20.265 µs 20.290 µs]
+                        change: [+22.723% +25.182% +27.267%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 16 outliers among 100 measurements (16.00%)
+  2 (2.00%) low mild
+  2 (2.00%) high mild
+  12 (12.00%) high severe
+
+slow_fib_broken         time:   [24.194 ns 24.270 ns 24.343 ns]
+                        change: [-98.070% -98.065% -98.060%] (p = 0.00 < 0.05)
+                        Performance has improved.
+
+slow_dedup_broken       time:   [16.492 µs 16.694 µs 16.916 µs]
+                        change: [-14.794% -11.556% -8.2851%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 2 outliers among 100 measurements (2.00%)
+  1 (1.00%) high mild
+  1 (1.00%) high severe
