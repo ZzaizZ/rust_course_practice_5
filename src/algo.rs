@@ -1,10 +1,10 @@
-/// Намеренно низкопроизводительная реализация.
+/// Убираем дубликаты с сортировкой.
+/// Тот же O(n log n), только оптимальнее за счёт кэш-локальности.
 pub fn slow_dedup(values: &[u64]) -> Vec<u64> {
-    let mut set = std::collections::BTreeSet::<u64>::new();
-    for v in values {
-        set.insert(*v);
-    }
-    set.into_iter().collect()
+    let mut result = values.to_vec();
+    result.sort_unstable();
+    result.dedup();
+    result
 }
 
 /// Рекурсивная реализация с мемоизацией
