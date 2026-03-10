@@ -1,0 +1,25 @@
+Running benches/baseline.rs (/data/programming/praktikum-rust/practice/5_practice/broken-app/target/release/deps/baseline-10414254ae4ba731)
+sum_even: 21.24µs
+slow_fib: 6.957195ms
+slow_dedup: 10.656446ms
+sum_even: 39.138µs
+slow_fib: 5.945191ms
+slow_dedup: 10.153371ms
+sum_even: 27.323µs
+slow_fib: 5.887052ms
+slow_dedup: 10.166944ms
+     Running benches/criterion.rs (/data/programming/praktikum-rust/practice/5_practice/broken-app/target/release/deps/criterion-e0de0e34e8cdfa46)
+Gnuplot not found, using plotters backend
+sum_even_broken         time:   [15.418 µs 15.435 µs 15.450 µs]
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
+
+slow_fib_broken         time:   [6.8151 ms 6.8908 ms 6.9852 ms]
+Found 4 outliers among 100 measurements (4.00%)
+  2 (2.00%) high mild
+  2 (2.00%) high severe
+
+slow_dedup_broken       time:   [10.583 ms 10.613 ms 10.645 ms]
+Found 5 outliers among 100 measurements (5.00%)
+  5 (5.00%) high mild
+
