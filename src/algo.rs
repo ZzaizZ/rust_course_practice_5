@@ -1,24 +1,13 @@
 /// Намеренно низкопроизводительная реализация.
 pub fn slow_dedup(values: &[u64]) -> Vec<u64> {
-    let mut out = Vec::new();
+    let mut set = std::collections::BTreeSet::<u64>::new();
     for v in values {
-        let mut seen = false;
-        for existing in &out {
-            if existing == v {
-                seen = true;
-                break;
-            }
-        }
-        if !seen {
-            // лишняя копия, хотя можно было пушить значение напрямую
-            out.push(*v);
-            out.sort_unstable(); // бесполезная сортировка на каждой вставке
-        }
+        set.insert(*v);
     }
-    out
+    set.into_iter().collect()
 }
 
-/// Классическая экспоненциальная реализация без мемоизации — будет медленной на больших n.
+/// Рекурсивная реализация с мемоизацией
 pub fn slow_fib(n: u64) -> u64 {
     let mut cache = std::collections::HashMap::<u64, u64>::with_capacity(n as usize + 1);
     cache.insert(0, 0);
