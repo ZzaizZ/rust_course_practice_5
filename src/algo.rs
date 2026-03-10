@@ -7,7 +7,7 @@ pub fn slow_dedup(values: &[u64]) -> Vec<u64> {
     result
 }
 
-/// Рекурсивная реализация с мемоизацией
+/// Линейная реализация с мемоизацией
 pub fn slow_fib(n: u64) -> u64 {
     match n {
         x if x <= 1 => x,

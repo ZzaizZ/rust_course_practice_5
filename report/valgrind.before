@@ -1,0 +1,49 @@
+==266813== Memcheck, a memory error detector
+==266813== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==266813== Using Valgrind-3.25.1 and LibVEX; rerun with -h for copyright info
+==266813== Command: target/release/demo
+==266813== 
+sum_even: 6
+non-zero bytes: 3
+normalize: helloworld
+fib(20): 6765
+dedup: [1, 2, 3, 4]
+==266813== 
+==266813== HEAP SUMMARY:
+==266813==     in use at exit: 544 bytes in 1 blocks
+==266813==   total heap usage: 14 allocs, 13 frees, 3,734 bytes allocated
+==266813== 
+==266813== 544 bytes in 1 blocks are still reachable in loss record 1 of 1
+==266813==    at 0x48A37A8: malloc (vg_replace_malloc.c:446)
+==266813==    by 0x4041429: alloc (alloc.rs:100)
+==266813==    by 0x4041429: alloc_impl_runtime (alloc.rs:209)
+==266813==    by 0x4041429: alloc_impl (alloc.rs:331)
+==266813==    by 0x4041429: allocate (alloc.rs:448)
+==266813==    by 0x4041429: try_new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:614)
+==266813==    by 0x4041429: new_uninit_in<alloc::collections::btree::node::LeafNode<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo>, alloc::alloc::Global> (boxed.rs:581)
+==266813==    by 0x4041429: new<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:87)
+==266813==    by 0x4041429: new_leaf<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (node.rs:225)
+==266813==    by 0x4041429: insert_entry<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:403)
+==266813==    by 0x4041429: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (entry.rs:377)
+==266813==    by 0x4041429: insert<usize, std::sys::pal::unix::stack_overflow::thread_info::ThreadInfo, alloc::alloc::Global> (map.rs:1054)
+==266813==    by 0x4041429: std::sys::pal::unix::stack_overflow::thread_info::set_current_info (thread_info.rs:122)
+==266813==    by 0x403EA8C: init (stack_overflow.rs:179)
+==266813==    by 0x403EA8C: init (mod.rs:42)
+==266813==    by 0x403EA8C: init (rt.rs:118)
+==266813==    by 0x403EA8C: {closure#0} (rt.rs:173)
+==266813==    by 0x403EA8C: do_call<std::rt::lang_start_internal::{closure_env#0}, isize> (panicking.rs:581)
+==266813==    by 0x403EA8C: catch_unwind<isize, std::rt::lang_start_internal::{closure_env#0}> (panicking.rs:544)
+==266813==    by 0x403EA8C: catch_unwind<std::rt::lang_start_internal::{closure_env#0}, isize> (panic.rs:359)
+==266813==    by 0x403EA8C: std::rt::lang_start_internal (rt.rs:171)
+==266813==    by 0x40180AB: main (in /data/programming/praktikum-rust/practice/5_practice/broken-app/target/release/demo)
+==266813== 
+==266813== LEAK SUMMARY:
+==266813==    definitely lost: 0 bytes in 0 blocks
+==266813==    indirectly lost: 0 bytes in 0 blocks
+==266813==      possibly lost: 0 bytes in 0 blocks
+==266813==    still reachable: 544 bytes in 1 blocks
+==266813==         suppressed: 0 bytes in 0 blocks
+==266813== 
+==266813== For lists of detected and suppressed errors, rerun with: -s
+==266813== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
