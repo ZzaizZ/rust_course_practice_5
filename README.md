@@ -50,3 +50,32 @@
 
 reference-app, который использовался для сравнения результатов можно
 найти [тут](https://code.s3.yandex.net/middle-rust-blockchain/reference-app.zip).
+
+## Как запустить проверки
+
+Для запуска тестов и бенчмарков необходимо выполнить следующие команды:
+
+```bash
+# Запуск бенчмарков (запустит baseline + criterion)
+cargo bench
+
+# Для профилирования и получения flamegraph можно использовать cargo-flamegraph
+cargo install flamegraph
+cargo flamegraph --bin demo --release
+
+# Запуск Miri
+rustup component add miri 
+cargo +nightly miri test
+
+# Запуск Valgrind
+valgrind --leak-check=full --show-leak-kinds=all target/debug/demo
+
+# Запуск Санитайзеров (для Linux)
+# Thread Sanitizer
+TSAN_OPTIONS="halt_on_error=0 external_symbolizer_path=$(rustup which llvm-symbolizer 2>/dev/null || echo '')" \
+RUSTFLAGS="-Z sanitizer=thread" \
+cargo +nightly run --bin demo --target x86_64-unknown-linux-gnu -Z build-std
+
+# Address Sanitizer
+RUSTFLAGS="-Z sanitizer=address" cargo +nightly run --release --bin demo --target x86_64-unknown-linux-gnu -Z build-std
+```
