@@ -1,0 +1,18 @@
+ Finished `release` profile [optimized] target(s) in 35.13s
+     Running `target/x86_64-unknown-linux-gnu/release/demo`
+sum_even: 6
+non-zero bytes: 3
+normalize: helloworld
+fib(20): 6765
+dedup: [1, 2, 3, 4]
+
+=================================================================
+==425559==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 4 byte(s) in 1 object(s) allocated from:
+    #0 0x55ca3c660a74  (/data/programming/praktikum-rust/practice/5_practice/broken-app/target/x86_64-unknown-linux-gnu/release/demo+0x102a74) (BuildId: 261ec43c34c6a7ccf4ac4ac297a16938e50ba1dd)
+    #1 0x55ca3c6e1b70  (/data/programming/praktikum-rust/practice/5_practice/broken-app/target/x86_64-unknown-linux-gnu/release/demo+0x183b70) (BuildId: 261ec43c34c6a7ccf4ac4ac297a16938e50ba1dd)
+    #2 0x55ca3c6924bf  (/data/programming/praktikum-rust/practice/5_practice/broken-app/target/x86_64-unknown-linux-gnu/release/demo+0x1344bf) (BuildId: 261ec43c34c6a7ccf4ac4ac297a16938e50ba1dd)
+
+SUMMARY: AddressSanitizer: 4 byte(s) leaked in 1 allocation(s).
+
