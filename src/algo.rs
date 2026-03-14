@@ -23,12 +23,3 @@ pub fn slow_fib(n: u64) -> u64 {
         }
     }
 }
-
-fn fib_internal(n: u64, cache: &mut std::collections::HashMap<u64, u64>) -> u64 {
-    if let Some(&val) = cache.get(&n) {
-        return val;
-    }
-    let val = fib_internal(n - 1, cache) + fib_internal(n - 2, cache);
-    cache.insert(n, val);
-    val
-}
